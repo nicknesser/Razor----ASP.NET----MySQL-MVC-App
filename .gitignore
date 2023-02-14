@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/RazorNETMySQL/appsettings.json
+/RazorNETMySQL/Program.cs
+/RazorNETMySQL/appsettings.Development.json
