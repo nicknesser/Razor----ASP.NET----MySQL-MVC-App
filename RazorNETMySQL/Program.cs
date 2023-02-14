@@ -1,4 +1,11 @@
+using RazorNETMySQL.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+//DbContext config
+builder.Services.AddDbContext<AppDbContext>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
