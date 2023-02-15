@@ -2,6 +2,7 @@
 
 namespace RazorNETMySQL.Models
 {
+    //This has a one-to-many relationship with Actors_Movies
     public class Actor
     {
         [Key]
@@ -11,6 +12,10 @@ namespace RazorNETMySQL.Models
         public string FullName { get; set; }
 
         public string Bio { get; set; }
+
+        //Relationships
+        public List<Actor_Movie> Actors_Movies { get; set; }
+
 
     }
 }

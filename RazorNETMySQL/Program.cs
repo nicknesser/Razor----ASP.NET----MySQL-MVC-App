@@ -1,16 +1,37 @@
 using RazorNETMySQL.Data;
+using Microsoft.Extensions.FileProviders;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-//DbContext config
+//DbContext config (data storage)
 builder.Services.AddDbContext<AppDbContext>();
 
 
+
+
 // Add services to the container.
+
+//Enable CORS - manually added
+builder.Services.AddCors(c =>
+{
+    c.AddPolicy("AllowOrigin", options =>
+    options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
+
+//Json Serializer (keep JSON Serializer as default) - manually added - install Nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
+options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+.AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+//Enable CORS - manually added
+app.UseCors(options =>
+options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
