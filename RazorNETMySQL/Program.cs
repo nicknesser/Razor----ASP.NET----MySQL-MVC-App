@@ -5,8 +5,8 @@ using Newtonsoft.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 
-//DbContext config (data storage)
-builder.Services.AddDbContext<AppDbContext>();
+//DbContext config (data storage) commenting out for now, is this even necessary for MySQL
+//builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString());
 
 
 
