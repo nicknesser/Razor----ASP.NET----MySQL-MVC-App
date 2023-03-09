@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//Enable CORS - manually added
+//Enable CORS - manually added, trying to work with MySQL
 builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options =>
